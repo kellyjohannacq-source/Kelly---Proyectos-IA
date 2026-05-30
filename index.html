@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Dashboard | Colmena Seguros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Brand Fonts: Montserrat for Headings, Roboto for Body -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>SST Analytics</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><i class="fa-solid fa-chart-pie"></i> Resumen Ejecutivo</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-building"></i> Gestión de Cuentas</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-users-gear"></i> Control Operativo</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-heart-pulse"></i> Siniestralidad</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-file-contract"></i> Cumplimiento</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar empresa, asesor, orden...">
+                </div>
+                <div class="user-profile">
+                    <div class="notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="avatar">
+                        <img src="https://ui-avatars.com/api/?name=Directora+SST&background=004B8D&color=fff" alt="Perfil">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Directora SST</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">Resumen Ejecutivo</h1>
+                
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon blue"><i class="fa-solid fa-building-user"></i></div>
+                        <div class="kpi-details">
+                            <span class="kpi-label">Total Cuentas Activas</span>
+                            <span class="kpi-value">50</span>
+                            <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> 2% vs mes anterior</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon teal"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <div class="kpi-details">
+                            <span class="kpi-label">Ejecución de Planes</span>
+                            <span class="kpi-value">82%</span>
+                            <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> 5% vs mes anterior</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon yellow"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="kpi-details">
+                            <span class="kpi-label">Órdenes Vencidas</span>
+                            <span class="kpi-value">1,240</span>
+                            <span class="kpi-trend negative"><i class="fa-solid fa-arrow-up"></i> 12% vs mes anterior</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon gray"><i class="fa-solid fa-sack-dollar"></i></div>
+                        <div class="kpi-details">
+                            <span class="kpi-label">Presupuesto Consumido</span>
+                            <span class="kpi-value">45%</span>
+                            <span class="kpi-trend neutral"><i class="fa-solid fa-minus"></i> En línea con el plan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Area -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h2>Siniestralidad: Frecuencia vs Severidad (YTD)</h2>
+                            <button class="icon-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="siniestralidadChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h2>Ejecución de Presupuesto por Trimestre</h2>
+                            <button class="icon-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="presupuestoChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts Table -->
+                <div class="data-table-card">
+                    <div class="card-header">
+                        <h2>Cuentas en Riesgo Operativo (Alertas Rojas)</h2>
+                        <button class="btn-primary">Ver todas</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Empresa</th>
+                                    <th>Asesor (APP)</th>
+                                    <th>Nivel de Riesgo</th>
+                                    <th>% Ejecución</th>
+                                    <th>Órdenes Vencidas</th>
+                                    <th>Estado SLA</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alertasTableBody">
+                                <!-- Data will be injected via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
