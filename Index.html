@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glosario IA 2026 · Kelly Carrillo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f2f2f2;
+    --surface: #ffffff;
+    --card: #fafafa;
+    --border: #dcdcdc;
+    --border-strong: #c0c0c0;
+    --text: #1a1a1a;
+    --muted: #6e6e6e;
+    --accent: #cc1a1a;
+    --accent-light: #f9eaea;
+    --accent2: #999999;
+    --header-bg: #e8e8e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px;
+    font-weight: 500;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--header-bg);
+    border-bottom: 2px solid var(--border-strong);
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+
+  .project-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 7vw, 64px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  h1 span {
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+  }
+
+  /* AUTHOR CARD */
+  .author-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .author-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.5px;
+  }
+
+  .author-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .author-links a {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .author-links a:hover { color: var(--accent); }
+
+  .author-links .linkedin {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 5px 12px;
+    border-radius: 2px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .author-links .linkedin:hover {
+    background: #a81414 !important;
+    color: #fff !important;
+  }
+
+  /* MAIN */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 40px 0 14px;
+  }
+
+  .section-label span {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-strong);
+  }
+
+  .section-label:first-child { margin-top: 0; }
+
+  /* CARDS */
+  .grid { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+
+  .term-card {
+    background: var(--surface);
+    padding: 22px 28px;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    align-items: start;
+    transition: background 0.15s;
+    position: relative;
+  }
+
+  .term-card::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: transparent;
+    transition: background 0.2s;
+  }
+
+  .term-card:hover { background: var(--accent-light); }
+  .term-card:hover::after { background: var(--accent); }
+
+  .term-num {
+    font-size: 10px;
+    color: var(--border-strong);
+    letter-spacing: 1px;
+    padding-top: 5px;
+    text-align: right;
+    font-weight: 400;
+  }
+
+  .term-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+
+  .term-def {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    color: #ccc;
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  footer .footer-name {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  footer .footer-contact {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: #999;
+  }
+
+  footer .footer-contact a { color: var(--accent); text-decoration: none; }
+  footer .footer-contact a:hover { text-decoration: underline; }
+
+  footer .footer-project {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #555;
+    margin-top: 8px;
+    border-top: 1px solid #333;
+    padding-top: 12px;
+    width: 100%;
+  }
+
+  /* Animations */
+  .term-card {
+    animation: fadeIn 0.35s ease both;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .term-card:nth-child(1){animation-delay:.04s}
+  .term-card:nth-child(2){animation-delay:.08s}
+  .term-card:nth-child(3){animation-delay:.12s}
+  .term-card:nth-child(4){animation-delay:.16s}
+  .term-card:nth-child(5){animation-delay:.20s}
+  .term-card:nth-child(6){animation-delay:.24s}
+  .term-card:nth-child(7){animation-delay:.28s}
+  .term-card:nth-child(8){animation-delay:.32s}
+  .term-card:nth-child(9){animation-delay:.36s}
+  .term-card:nth-child(10){animation-delay:.40s}
+  .term-card:nth-child(11){animation-delay:.44s}
+  .term-card:nth-child(12){animation-delay:.48s}
+  .term-card:nth-child(13){animation-delay:.52s}
+  .term-card:nth-child(14){animation-delay:.56s}
+
+  @media(max-width:600px){
+    .author-bar { flex-direction: column; gap: 12px; text-align: center; }
+    .term-card { grid-template-columns: 24px 1fr; gap: 10px; padding: 18px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">Glosario IA 2026 &nbsp;·&nbsp; Kelly Carrillo Quintero</div>
+
+<header>
+  <p class="project-label">Proyecto · Inteligencia Artificial</p>
+  <h1>Glosario <span>IA</span> 2026</h1>
+  <p class="subtitle">Términos clave en Agentes, Plataformas y Automatización</p>
+</header>
+
+<div class="author-bar">
+  <span class="author-name">Kelly Carrillo Quintero</span>
+  <div class="author-links">
+    <a href="mailto:kellyjohanna.cq@gmail.com">✉ kellyjohanna.cq@gmail.com</a>
+    <a href="tel:3005667055">📞 300 566 7055</a>
+    <a href="https://www.linkedin.com/in/kelly-carrillo-quintero" target="_blank" class="linkedin">in LinkedIn</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section-label"><span>Conceptos de Agentes</span></div>
+  <div class="grid">
+    <div class="term-card">
+      <div class="term-num">01</div>
+      <div>
+        <div class="term-name">Agente</div>
+        <div class="term-def">Sistema de IA que percibe, decide y actúa autónomamente.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">02</div>
+      <div>
+        <div class="term-name">Multiagente</div>
+        <div class="term-def">Red de agentes de IA que colaboran entre sí.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">03</div>
+      <div>
+        <div class="term-name">Sistema Multiagente</div>
+        <div class="term-def">Resolver tareas complejas dividiendo trabajo entre agentes especializados.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">04</div>
+      <div>
+        <div class="term-name">Sistema Predictivo de Agentes</div>
+        <div class="term-def">Agentes que analizan datos para predecir y automatizar decisiones futuras.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">05</div>
+      <div>
+        <div class="term-name">Skill</div>
+        <div class="term-def">Habilidad específica que permite a un agente ejecutar tareas concretas.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">06</div>
+      <div>
+        <div class="term-name">Capacitación con Agente</div>
+        <div class="term-def">Entrena equipos con respuestas inteligentes, personalizadas y disponibles las 24 horas.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label"><span>Herramientas & Plataformas</span></div>
+  <div class="grid">
+    <div class="term-card">
+      <div class="term-num">07</div>
+      <div>
+        <div class="term-name">Droid</div>
+        <div class="term-def">Agente de codificación empresarial que gestiona flujos de desarrollo completos.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">08</div>
+      <div>
+        <div class="term-name">Claude vs Droid</div>
+        <div class="term-def">Claude es IA conversacional; Droid es agente especializado en código.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">09</div>
+      <div>
+        <div class="term-name">GitHub</div>
+        <div class="term-def">Plataforma en la nube para alojar y gestionar repositorios colaborativamente.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">10</div>
+      <div>
+        <div class="term-name">Repositorio</div>
+        <div class="term-def">Almacena, versiona y comparte código de forma organizada y colaborativa.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">11</div>
+      <div>
+        <div class="term-name">Open Cloud</div>
+        <div class="term-def">Plataforma de servicios cloud que ofrece cómputo, almacenamiento y networking escalable.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">12</div>
+      <div>
+        <div class="term-name">Sesión en Ollama</div>
+        <div class="term-def">Período activo donde el modelo procesa consultas localmente sin internet.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label"><span>Bots & Seguridad</span></div>
+  <div class="grid">
+    <div class="term-card">
+      <div class="term-num">13</div>
+      <div>
+        <div class="term-name">Fake Bot</div>
+        <div class="term-def">Bot que imita humanos para generar actividad falsa artificialmente.</div>
+      </div>
+    </div>
+    <div class="term-card">
+      <div class="term-num">14</div>
+      <div>
+        <div class="term-name">GitHub — Cómo Funciona</div>
+        <div class="term-def">Almacena código, rastrea cambios y permite colaboración mediante ramas.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">Kelly Carrillo Quintero</div>
+    <div class="footer-contact">
+      <a href="mailto:kellyjohanna.cq@gmail.com">kellyjohanna.cq@gmail.com</a>
+      &nbsp;·&nbsp; 300 566 7055 &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/kelly-carrillo-quintero" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-project">Glosario IA 2026 · 14 términos</div>
+  </div>
+</footer>
+
+</body>
+</html>
